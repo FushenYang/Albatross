@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/tauri";
+import Database from "tauri-plugin-sql-api";
+
+
 import "./App.css";
 
 function App() {
@@ -12,9 +15,18 @@ function App() {
     setGreetMsg(await invoke("greet", { name }));
   }
 
+  const [data,setData] =useState("");
+  useEffect(()=>{
+    (async ()=>{
+      const db = await Database.load("sqlite:Albatross.db");
+      const res :{count: number;}[] = await db.select(`SELECT count(*) as count FROM Config`);
+      setData(res[0].count.toString());
+    })()
+},[])
+
   return (
     <div className="container">
-      <h1>Welcome to Tauri!</h1>
+      <h1>当前数据库中有数据{data}条。</h1>
 
       <div className="row">
         <a href="https://vitejs.dev" target="_blank">
