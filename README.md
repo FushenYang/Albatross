@@ -1,11 +1,3 @@
-# Tauri + React + Typescript
+# Albatross 信天翁管理系统
 
-This template should help get you started developing with Tauri, React and Typescript in Vite.
-
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
-
-## Albatross 信天翁管理系统
-
-用于管理人员数据的示例系统。
+一个小型的信息管理系统，保存、增加、删除等等，如果你的日常经常要面对一些繁琐性的事务跟踪工作，可以尝试使用这个系统，有任何建议可以通过邮件或者issue联系我。
