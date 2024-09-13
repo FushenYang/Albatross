@@ -13,7 +13,8 @@
     "@tauri-apps/api": "^1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tauri-plugin-sql-api": "github:tauri-apps/tauri-plugin-sql#v1"
+    "tauri-plugin-sql-api": "github:tauri-apps/tauri-plugin-sql#v1",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1",

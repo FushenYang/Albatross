@@ -20,6 +20,9 @@ importers:
       tauri-plugin-sql-api:
         specifier: github:tauri-apps/tauri-plugin-sql#v1
         version: https://codeload.github.com/tauri-apps/tauri-plugin-sql/tar.gz/10c441d2e90e5df0e414c40ba81f597b6c38b164
+      xlsx:
+        specifier: https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz
+        version: https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz
     devDependencies:
       '@tauri-apps/cli':
         specifier: ^1
@@ -659,6 +662,12 @@ packages:
       terser:
         optional: true
 
+  xlsx@https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz:
+    resolution: {tarball: https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz}
+    version: 0.20.3
+    engines: {node: '>=0.8'}
+    hasBin: true
+
   yallist@3.1.1:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}
 
@@ -1186,5 +1195,7 @@ snapshots:
       rollup: 4.21.3
     optionalDependencies:
       fsevents: 2.3.3
+
+  xlsx@https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz: {}
 
   yallist@3.1.1: {}
