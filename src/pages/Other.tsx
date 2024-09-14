@@ -4,7 +4,7 @@ import Database from "tauri-plugin-sql-api";
 import { utils, read } from 'xlsx';
 import { open } from '@tauri-apps/api/dialog';
 import { readBinaryFile } from '@tauri-apps/api/fs';
-import SideMenu from "../layouts/SideMenu";
+// import SideMenu from "../layouts/SideMenu";
 import "../App.css"
 
 
@@ -30,7 +30,7 @@ function Other() {
         <div className="flex justify-start items-start h-screen">
 
             <div className="w-1/6 bg-gray-200 p-3">
-                <SideMenu></SideMenu>
+                {/* <SideMenu></SideMenu> */}
             </div>
 
             <div className="flex-grow bg-gray-100 p-4">
