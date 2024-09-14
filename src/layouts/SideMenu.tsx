@@ -1,12 +1,15 @@
-const SideMenu = () => {
+
+
+const SideMenu = ({currentItem}:{currentItem:string}) => {
     return (
         <div className="flex h-screen flex-col justify-between border-e bg-white">
             <div className="px-4 py-6">
                 <ul className="mt-6 space-y-1">
+
                     <li>
                         <a
                             href="/"
-                            className="block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700"
+                            className={`block rounded-lg  px-4 py-2 text-sm font-medium ${currentItem == "仪表盘" ? 'bg-gray-300 text-blue-700' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-700'}`}
                         >
                             仪表盘
                         </a>
@@ -38,7 +41,7 @@ const SideMenu = () => {
                             <ul className="mt-2 space-y-1 px-4">
                                 <li>
                                     <a
-                                        href="#"
+                                        href="/Membr"
                                         className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                                     >
                                         列表
@@ -68,7 +71,7 @@ const SideMenu = () => {
                     <li>
                         <a
                             href="#"
-                            className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                            className={`block rounded-lg  px-4 py-2 text-sm font-medium ${currentItem == "人员" ? 'bg-gray-300 text-blue-700' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-700'}`}
                         >
                             人员
                         </a>
