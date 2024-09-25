@@ -25,7 +25,6 @@ export const getInspectionsCount = async (): Promise<number> => {
 export const getAllInspections = async (): Promise<Inspection[]> => {
   const db = await getDb();
   const res: any[] = await db.select("SELECT * FROM inspections");
-  console.log(res);
 
   // Convert the 'At' field from integer to Date object
   const inspections: Inspection[] = res.map((row) => ({
@@ -34,7 +33,7 @@ export const getAllInspections = async (): Promise<Inspection[]> => {
     UnitName: row.UnitName,
     ItemName: row.ItemName,
     Location: row.Location,
-    At: new Date(parseInt("1727225591465", 10)), // Assuming 'At' is a Unix timestamp in seconds
+    At: new Date(parseInt(row.At.toString(), 10)), // Assuming 'At' is a Unix timestamp in seconds
     Description: row.Description,
     Remarks: row.Remarks,
     IsArchived: row.IsArchived === 1,
