@@ -16,6 +16,24 @@ fn main() {
             description: "create_initial_tables",
             sql: "CREATE TABLE Config (id INTEGER PRIMARY KEY, name TEXT,value TEXT);",
             kind: MigrationKind::Up,
+        },
+        Migration {
+            version: 2,
+            description: "create_inspections",
+            sql: r#"
+            CREATE TABLE "Inspections" (
+                "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                "Category" TEXT(255),
+                "UnitName" TEXT(255),
+                "ItemName" TEXT(255),
+                "Location" TEXT(255),
+                "At" INTEGER,
+                "Description" TEXT(255),
+                "Remarks" TEXT(255),
+                "IsArchived" INTEGER
+            );
+        "#,
+            kind: MigrationKind::Up,
         }
     ];
     tauri::Builder::default()
