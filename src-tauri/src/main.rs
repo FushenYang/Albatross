@@ -34,7 +34,37 @@ fn main() {
             );
         "#,
             kind: MigrationKind::Up,
-        }
+        } ,// 添加检查表格
+        Migration {
+            version: 3,
+            description: "create_unit_aliases",
+            sql: r#"
+            CREATE TABLE "UnitAliases" (
+                "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                "UnitCode" TEXT(255),
+                "AliasName" TEXT(255)
+            );
+        "#,
+            kind: MigrationKind::Up,
+        }, // 添加单位别名表格
+        Migration {
+            version: 4,
+            description: "create_units",
+            sql: r#"
+            CREATE TABLE "Units" (
+                "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                "UnitCode" TEXT(255),
+                "FullUnitName" TEXT(255),
+                "ShortUnitName" TEXT(255),
+                "Category" TEXT(255),
+                "Location" TEXT(255),
+                "Telephone" TEXT(255),
+                "ContactPerson" TEXT(255),
+                "Remarks" TEXT(255)
+            );
+        "#,
+            kind: MigrationKind::Up,
+        } // 添加单位表格
     ];
     tauri::Builder::default()
         .plugin(tauri_plugin_sql::Builder::default()

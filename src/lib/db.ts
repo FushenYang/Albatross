@@ -1,5 +1,5 @@
 import Database from "tauri-plugin-sql-api";
-import { Inspection } from "./entities";
+import { Inspection, Unit, UnitAlias } from "./entities";
 
 
 // Initialize the database connection and get Db
@@ -36,4 +36,61 @@ export const getAllInspections = async (): Promise<Inspection[]> => {
   }));
 
   return inspections;
+};
+
+export const insertInspection = async (inspection: Partial<Inspection>): Promise<void> => {
+  const db = await getDb();
+  await db.execute(
+    "INSERT INTO inspections (Category, UnitName, ItemName, Location, At, Description, Remarks, IsArchived) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+    [
+      inspection.Category,
+      inspection.UnitName,
+      inspection.ItemName,
+      inspection.Location,
+      Math.floor(inspection.At!.getTime() / 1000), // Convert Date to Unix timestamp in seconds
+      inspection.Description,
+      inspection.Remarks,
+      inspection.IsArchived ? 1 : 0,
+    ]
+  );
+};
+
+// Fetch all units from the database
+export const getAllUnits = async (): Promise<Unit[]> => {
+  const db = await getDb();
+  const res: any[] = await db.select("SELECT * FROM Units");
+
+  const units: Unit[] = res.map((row) => ({
+    id: row.id,
+    UnitCode: row.UnitCode,
+    FullUnitName: row.FullUnitName,
+    ShortUnitName: row.ShortUnitName,
+    Category: row.Category,
+    Location: row.Location,
+    Telephone: row.Telephone,
+    ContactPerson: row.ContactPerson,
+    Remarks: row.Remarks,
+  }));
+
+  return units;
+};
+
+// Fetch all unit aliases from the database
+export const getAllUnitAliases = async (): Promise<UnitAlias[]> => {
+  const db = await getDb();
+  const res: any[] = await db.select("SELECT * FROM UnitAliases");
+
+  const unitAliases: UnitAlias[] = res.map((row) => ({
+    id: row.id,
+    UnitCode: row.UnitCode,
+    AliasName: row.AliasName,
+  }));
+
+  return unitAliases;
+};
+
+// Delete an inspection from the database
+export const deleteInspection = async (id: number): Promise<void> => {
+  const db = await getDb();
+  await db.execute("DELETE FROM inspections WHERE id = ?", [id]);
 };

@@ -16,8 +16,8 @@ const SideMenu = ({currentItem}:{currentItem:string}) => {
             <div className="px-4 py-6">
                 <ul className="mt-6 space-y-1">
                     <NavLi href="/" label="检查" currentItem={currentItem} />
+                    <NavLi href="/Units" label="部门" currentItem={currentItem} />
                     <NavLi href="/Membr" label="人员" currentItem={currentItem} />
-                    <NavLi href="#" label="部门" currentItem={currentItem} />
                 </ul>
             </div>
             <div className="sticky inset-x-0 bottom-0 border-t border-gray-100">
