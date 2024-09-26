@@ -3,7 +3,7 @@ const NavLi = ({href,label,currentItem}:{href:string;label:string;currentItem:st
 <li>
     <a
         href={href}
-        className={`block rounded-lg  px-4 py-2 text-sm font-medium ${currentItem == label ? 'bg-gray-300 text-blue-700' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-700'}`}
+        className={`block rounded-lg  px-4 py-2 text-sm font-medium ${currentItem == label ? 'bg-gray-300 text-blue-600' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-700'}`}
     >
         {label}
     </a>
@@ -15,7 +15,7 @@ const SideMenu = ({currentItem}:{currentItem:string}) => {
         <div className="flex h-screen flex-col justify-between border-e bg-white">
             <div className="px-4 py-6">
                 <ul className="mt-6 space-y-1">
-                    <NavLi href="/" label="仪表盘" currentItem={currentItem} />
+                    <NavLi href="/" label="检查" currentItem={currentItem} />
                     <NavLi href="/Membr" label="人员" currentItem={currentItem} />
                     <NavLi href="#" label="部门" currentItem={currentItem} />
                 </ul>
