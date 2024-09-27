@@ -29,8 +29,8 @@ jobs:
         profile: minimal
         override: true
 
-    - name: Install Tauri CLI
-      run: cargo install tauri-cli
+    # - name: Install Tauri CLI
+    #   run: cargo install tauri-cli
 
     - name: Install pnpm
       run: npm install -g pnpm
@@ -41,8 +41,8 @@ jobs:
     - name: Build project
       run: pnpm build
 
-    - name: Build Tauri project
-      run: pnpm tauri build
+    # - name: Build Tauri project
+    #   run: pnpm tauri build
 
 
     - name: Create Release
