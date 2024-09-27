@@ -1,5 +1,5 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Home from "./pages/Home"
+import Home from "./pages/HomePage"
 import Member from "./pages/Member";
 import SideMenu from "./layouts/SideMenu";
 import "./App.css"
