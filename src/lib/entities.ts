@@ -33,7 +33,7 @@ export interface Member {
     StaffID: string;
     JoinAt: number;
     BirthDay: string;
-    gender: string;
+    Gender: string;
     IDCard: string;
     Education: string;
     Party: string;

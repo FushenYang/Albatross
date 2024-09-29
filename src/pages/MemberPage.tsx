@@ -21,20 +21,20 @@ const MemberPage: React.FC = () => {
           <thead>
             <tr className="bg-gray-100 border-b">
               <th className="py-2 px-4 text-left">姓名</th>
-              <th className="py-2 px-4 text-left">员工编号</th>
+              <th className="py-2 px-4 text-left">工号</th>
               <th className="py-2 px-4 text-left">加入时间</th>
               <th className="py-2 px-4 text-left">生日</th>
               <th className="py-2 px-4 text-left">性别</th>
               <th className="py-2 px-4 text-left">身份证</th>
               <th className="py-2 px-4 text-left">学历</th>
-              <th className="py-2 px-4 text-left">党派</th>
+              <th className="py-2 px-4 text-left">面貌</th>
               <th className="py-2 px-4 text-left">电话</th>
               <th className="py-2 px-4 text-left">职位</th>
               <th className="py-2 px-4 text-left">级别</th>
               <th className="py-2 px-4 text-left">单位代码</th>
               <th className="py-2 px-4 text-left">单位名称</th>
               <th className="py-2 px-4 text-left">职称</th>
-              <th className="py-2 px-4 text-left">居住地址</th>
+              <th className="py-2 px-4 text-left">户籍地址</th>
               <th className="py-2 px-4 text-left">派出所</th>
               <th className="py-2 px-4 text-left">备注</th>
             </tr>
@@ -46,7 +46,7 @@ const MemberPage: React.FC = () => {
                 <td className="py-2 px-4">{member.StaffID}</td>
                 <td className="py-2 px-4">{member.JoinAt}</td>
                 <td className="py-2 px-4">{member.BirthDay}</td>
-                <td className="py-2 px-4">{member.gender}</td>
+                <td className="py-2 px-4">{member.Gender}</td>
                 <td className="py-2 px-4">{member.IDCard}</td>
                 <td className="py-2 px-4">{member.Education}</td>
                 <td className="py-2 px-4">{member.Party}</td>
