@@ -64,7 +64,35 @@ fn main() {
             );
         "#,
             kind: MigrationKind::Up,
-        } // 添加单位表格
+        }, // 添加单位表格
+
+        Migration {
+            version: 5,
+            description: "create_members",
+            sql: r#"
+            CREATE TABLE "Members" (
+            "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+            "Name" TEXT(255),
+            "StaffID" TEXT(10),
+            "JoinAt" INTEGER,
+            "BirthDay" TEXT,
+            "Gender" TEXT,
+            "IDCard" TEXT,
+            "Education" TEXT,
+            "Party" TEXT,
+            "Phone" TEXT,
+            "Job" TEXT,
+            "Grade" TEXT,
+            "UnitCode" TEXT,
+            "UnitName" TEXT,
+            "Title" TEXT,
+            "ResidencyAddress" TEXT,
+            "PoliceStation" TEXT,
+            "Notes" TEXT
+        )
+        "#,
+            kind: MigrationKind::Up,
+        }, // 添加人员表
     ];
     tauri::Builder::default()
         .plugin(tauri_plugin_sql::Builder::default()

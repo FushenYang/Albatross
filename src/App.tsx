@@ -1,6 +1,6 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Home from "./pages/HomePage"
-import Member from "./pages/Member";
+import MemberPage from "./pages/MemberPage";
 import SideMenu from "./layouts/SideMenu";
 import "./App.css"
 import UnitsPage from "./pages/UnitsPage";
@@ -11,7 +11,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={ <Frame item="检查" Content={Home} />} />
         <Route path="/Units" element={ <Frame item="部门" Content={UnitsPage} />} />
-        <Route path="/Membr" element={ <Frame item="人员" Content={Member} />} />
+        <Route path="/Membr" element={ <Frame item="人员" Content={MemberPage} />} />
       </Routes>
     </BrowserRouter>
   )

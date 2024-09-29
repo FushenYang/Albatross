@@ -26,3 +26,24 @@ export interface UnitAlias {
     UnitCode: string;
     AliasName: string;
 }
+
+export interface Member {
+    id: number;
+    Name: string;
+    StaffID: string;
+    JoinAt: number;
+    BirthDay: string;
+    gender: string;
+    IDCard: string;
+    Education: string;
+    Party: string;
+    Phone: string;
+    Job: string;
+    Grade: string;
+    UnitCode: string;
+    UnitName: string;
+    Title: string;
+    ResidencyAddress: string;
+    PoliceStation: string;
+    Notes: string;
+  }
