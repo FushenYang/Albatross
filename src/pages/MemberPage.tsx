@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Member } from "../lib/entities";
+import { getAllMembers } from "../lib/db";
 
 const MemberPage: React.FC = () => {
   const [members, setMembers] = useState<Member[]>([]);
@@ -9,7 +10,7 @@ const MemberPage: React.FC = () => {
   }, []);
 
   const fetchMembers = async () => {
-    const result: React.SetStateAction<Member[]> = [];
+    const result = await getAllMembers();
     setMembers(result);
   };
 
@@ -44,7 +45,7 @@ const MemberPage: React.FC = () => {
               <tr key={member.id} className="border-b hover:bg-gray-50">
                 <td className="py-2 px-4">{member.Name}</td>
                 <td className="py-2 px-4">{member.StaffID}</td>
-                <td className="py-2 px-4">{member.JoinAt}</td>
+                <td className="py-2 px-4">{new Date((member.JoinAt - 25569) * 86400 * 1000).toLocaleDateString()}</td>
                 <td className="py-2 px-4">{member.BirthDay}</td>
                 <td className="py-2 px-4">{member.Gender}</td>
                 <td className="py-2 px-4">{member.IDCard}</td>

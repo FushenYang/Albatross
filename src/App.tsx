@@ -4,6 +4,7 @@ import MemberPage from "./pages/MemberPage";
 import SideMenu from "./layouts/SideMenu";
 import "./App.css"
 import UnitsPage from "./pages/UnitsPage";
+import ImportData from "./pages/ImportData";
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <Route path="/" element={ <Frame item="检查" Content={Home} />} />
         <Route path="/Units" element={ <Frame item="部门" Content={UnitsPage} />} />
         <Route path="/Membr" element={ <Frame item="人员" Content={MemberPage} />} />
+        <Route path="/Import" element={ <Frame item="导入" Content={ImportData} />} />
       </Routes>
     </BrowserRouter>
   )

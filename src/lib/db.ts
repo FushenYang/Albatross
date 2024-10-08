@@ -1,15 +1,16 @@
 import Database from "tauri-plugin-sql-api";
 import { Inspection, Unit, UnitAlias } from "./entities";
+import { Member } from "./entities";
 
 
 // Initialize the database connection and get Db
-const getDb = async (): Promise<Database> => {
+const getDatabase = async (): Promise<Database> => {
   return await Database.load("sqlite:Albatross.db");
 };
 
 // Fetch the count of inspections from the database
 export const getInspectionsCount = async (): Promise<number> => {
-  const db = await getDb();
+  const db = await getDatabase();
   const res: { count: number }[] = await db.select(
     "SELECT count(*) as count FROM inspections"
   );
@@ -18,7 +19,7 @@ export const getInspectionsCount = async (): Promise<number> => {
 
 // Fetch all inspections from the database
 export const getAllInspections = async (): Promise<Inspection[]> => {
-  const db = await getDb();
+  const db = await getDatabase();
   const res: any[] = await db.select("SELECT * FROM inspections");
 
   //console.log(res)
@@ -39,7 +40,7 @@ export const getAllInspections = async (): Promise<Inspection[]> => {
 };
 
 export const insertInspection = async (inspection: Partial<Inspection>): Promise<void> => {
-  const db = await getDb();
+  const db = await getDatabase();
   await db.execute(
     "INSERT INTO inspections (Category, UnitName, ItemName, Location, At, Description, Remarks, IsArchived) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
     [
@@ -57,7 +58,7 @@ export const insertInspection = async (inspection: Partial<Inspection>): Promise
 
 // Fetch all units from the database
 export const getAllUnits = async (): Promise<Unit[]> => {
-  const db = await getDb();
+  const db = await getDatabase();
   const res: any[] = await db.select("SELECT * FROM Units");
 
   const units: Unit[] = res.map((row) => ({
@@ -77,7 +78,7 @@ export const getAllUnits = async (): Promise<Unit[]> => {
 
 // Fetch all unit aliases from the database
 export const getAllUnitAliases = async (): Promise<UnitAlias[]> => {
-  const db = await getDb();
+  const db = await getDatabase();
   const res: any[] = await db.select("SELECT * FROM UnitAliases");
 
   const unitAliases: UnitAlias[] = res.map((row) => ({
@@ -91,6 +92,27 @@ export const getAllUnitAliases = async (): Promise<UnitAlias[]> => {
 
 // Delete an inspection from the database
 export const deleteInspection = async (id: number): Promise<void> => {
-  const db = await getDb();
+  const db = await getDatabase();
   await db.execute("DELETE FROM inspections WHERE id = ?", [id]);
 };
+
+
+export async function getAllMembers(): Promise<Member[]> {
+  const db = await getDatabase();
+  const members = await db.select<Member[]>(`SELECT Name, StaffID, JoinAt, BirthDay,
+    Gender, IDCard, Education, Party, Phone, Job, Grade, UnitCode,
+    UnitName, Title, ResidencyAddress, PoliceStation, Notes FROM Members`);
+  return members;
+}
+
+export async function deleteMembers() {
+  const db = await getDatabase();
+  await db.execute("DELETE FROM Members");
+}
+
+export async function getMembersCount() {
+  const db = await getDatabase();
+  const result = await db.select<{ count: number }[]>("SELECT COUNT(*) as count FROM Members");
+  return result[0].count;
+
+}

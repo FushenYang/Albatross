@@ -18,6 +18,7 @@ const SideMenu = ({currentItem}:{currentItem:string}) => {
                     <NavLi href="/" label="检查" currentItem={currentItem} />
                     <NavLi href="/Units" label="部门" currentItem={currentItem} />
                     <NavLi href="/Membr" label="人员" currentItem={currentItem} />
+                    <NavLi href="/Import" label="导入" currentItem={currentItem} />
                 </ul>
             </div>
             <div className="sticky inset-x-0 bottom-0 border-t border-gray-100">

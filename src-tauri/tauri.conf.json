@@ -26,8 +26,8 @@
     "windows": [
       {
         "title": "albatross",
-        "width": 1200,
-        "height": 900
+        "width": 1500,
+        "height": 1000
       }
     ],
     "security": {
