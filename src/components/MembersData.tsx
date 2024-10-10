@@ -52,8 +52,10 @@ function MembersData() {
                 const worksheet = workbook.Sheets[sheetName];
                 const headers: string[] = utils.sheet_to_json(worksheet, { header: 1 })[0] as string[];
 
-                if (!expectedHeaders.every(header => headers.includes(header))) {
-                    setImportStatus("错误：表头不匹配。表头必须包含 " + expectedHeaders.join(", "));
+                const missingHeaders = expectedHeaders.filter(header => !headers.includes(header));
+
+                if (missingHeaders.length > 0) {
+                    setImportStatus("错误：表头不匹配。缺少以下字段: " + missingHeaders.join(", "));
                     return;
                 }
 
