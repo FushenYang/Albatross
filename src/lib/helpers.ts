@@ -1,6 +1,4 @@
-import { UnitAlias } from './entities';
-import { Member } from './entities';
-import { Unit } from './entities';
+import { UnitAlias, Member, Unit } from './entities';
 
 //函数的功能是根据Member[] UnitName字段的值去 UnitAlias[] 查询对应的UnitCode字段的值，然后将UnitCode字段的值赋值给Member[] UnitCode字段
 //函数的名称为fillUnitCode
@@ -29,4 +27,16 @@ export function fillFullUnitName(members: Member[], units: Unit[]): Member[] {
         ...member,
         FullUnitName: unitMap.get(member.UnitCode) || ""
     }));
+}
+
+
+//函数功能为对输入的Member[]进行检查，如果存在UnitCode为空的情况，返回一段字符串信息，明确说明哪些Member数据有误，标注好Member的UnitName
+//如果没有问题，返回空字符串
+//函数名称为checkMembers
+export function checkMembers(members: Member[]): string {
+    const invalidMembers = members.filter(member => !member.UnitCode);
+    if (invalidMembers.length === 0) {
+        return "";
+    }
+    return invalidMembers.map(member => `单位名称： ${member.UnitName} 无法找到对应的部门代码.`).join("\n");
 }
